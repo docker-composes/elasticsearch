@@ -1,0 +1,22 @@
+version: '2.2'
+services:
+  elasticsearch-singleton:
+    image: elasticsearch:7.3.2
+    container_name: elasticsearch-singleton
+    environment:
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - $PWD/data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - docker-net
+
+networks:
+  docker-net:
+    external: true
