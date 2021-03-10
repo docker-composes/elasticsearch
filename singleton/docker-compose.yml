@@ -15,8 +15,8 @@ services:
       - 9200:9200
       - 9300:9300
     networks:
-      - docker-net
+      - local-net
 
 networks:
-  docker-net:
+  local-net:
     external: true
